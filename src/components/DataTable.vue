@@ -1,14 +1,29 @@
 <template>
-  <v-data-table
-    :headers="headers"
-    :items="desserts"
-    :items-per-page="5"
-    class="elevation-1"
-  ></v-data-table>
+  <v-card class="mx-auto mt-5" max-width="900">
+    <v-data-table
+      :headers="headers"
+      :items="desserts"
+      :items-per-page="5"
+      class="elevation-1"
+      item-key="name"
+      show-expand    
+    >
+    <template #expanded-item="{headers}">
+      <td :colspan="headers.length">
+        <simple-data-table/>
+      </td>
+    </template>
+    </v-data-table>
+  </v-card>
 </template>
 
 <script>
+import SimpleDataTable from './SimpleDataTable.vue';
+
 export default {
+  components: {
+    SimpleDataTable,
+  },
   data () {
     return {
       headers: [
