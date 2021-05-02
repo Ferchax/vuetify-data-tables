@@ -9,7 +9,7 @@
       show-expand    
     >
     <template #expanded-item="{headers}">
-      <td :colspan="headers.length">
+      <td :colspan="headers.length" class="pa-0">
         <simple-data-table/>
       </td>
     </template>
