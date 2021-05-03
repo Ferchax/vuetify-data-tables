@@ -1,12 +1,11 @@
 <template>
-  <v-card class="mx-auto mt-5" max-width="900">
     <v-data-table
       :headers="headers"
       :items="desserts"
       :items-per-page="5"
-      class="elevation-1"
+      class="elevation-10"
       item-key="name"
-      show-expand    
+      show-expand
     >
     <template #expanded-item="{headers}">
       <td :colspan="headers.length" class="pa-0">
@@ -14,7 +13,6 @@
       </td>
     </template>
     </v-data-table>
-  </v-card>
 </template>
 
 <script>

@@ -1,14 +1,20 @@
 <template>
-  <v-app>
-    <v-app-bar
+  <v-app id="inspire">
+    <v-navigation-drawer
+      v-model="drawer"
       app
-      color="primary"
-      dark
-    ></v-app-bar>
+    >
+      <!--  -->
+    </v-navigation-drawer>
+
+    <v-app-bar app>
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+
+      <v-toolbar-title>Application</v-toolbar-title>
+    </v-app-bar>
 
     <v-main>
       <data-table/>
-      <!--<simple-data-table/>-->
     </v-main>
   </v-app>
 </template>
@@ -26,7 +32,11 @@ export default {
   },
 
   data: () => ({
-    //
+    drawer: null,
+    items: [
+      { title: 'Data-Table', icon: 'mdi-table', to: '/'},
+      { title: 'Tabs', icon: 'mdi-tab', to: '/tabs'}
+    ]
   }),
 };
 </script>
