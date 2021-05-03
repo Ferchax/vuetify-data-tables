@@ -4,39 +4,72 @@
       v-model="drawer"
       app
     >
-      <!--  -->
+      <v-list-item>
+        <v-list-item-content>
+          <v-list-item-title class="title">
+            Vuetify UI Components
+          </v-list-item-title>
+          <v-list-item-subtitle>
+            Enter to see it!
+          </v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+
+      <v-divider></v-divider>
+
+      <v-list
+        dense
+        nav
+      >
+        <v-list-item
+          v-for="item in items"
+          :key="item.title"
+          :to="item.to"
+          link
+          @click="changeToolbarTitle(item.title)"
+        >
+          <v-list-item-icon>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+
     </v-navigation-drawer>
 
     <v-app-bar app>
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click="drawer=!drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Application</v-toolbar-title>
+      <v-toolbar-title>{{toolbarTitle}}</v-toolbar-title>
     </v-app-bar>
 
     <v-main>
-      <data-table/>
+       <router-view></router-view>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import DataTable from './components/DataTable.vue';
-//import SimpleDataTable from './components/SimpleDataTable.vue';
-
 export default {
-  name: 'App',
-
-  components: {
-    DataTable,
-    //SimpleDataTable
-  },
-
   data: () => ({
     drawer: null,
+    toolbarTitle: 'Data Table',
     items: [
-      { title: 'Data-Table', icon: 'mdi-table', to: '/'},
-      { title: 'Tabs', icon: 'mdi-tab', to: '/tabs'}
+      { title: 'Data Table', icon: 'mdi-table', to: '/' },
+      { title: 'Tabs', icon: 'mdi-tab', to: '/tabs' }
     ]
   }),
+  methods:{
+    changeToolbarTitle(title) {
+      this.toolbarTitle = title;
+    }
+  }
 };
 </script>
+
+<style lang="scss">
+
+</style>
